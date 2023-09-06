@@ -1,25 +1,26 @@
-import getFormattedDate from "@/lib/getFormattedDate";
-import { getSortedPostsData, getPostData } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+
+import getFormattedDate from "@/lib/getFormattedDate";
+import { getSortedPostsData, getPostData } from "@/lib/posts";
 
 export function generateStaticParams() {
   const posts = getSortedPostsData();
 
   return posts.map((post) => ({
-    postId: post.id
+    postId: post.id,
   }));
 }
 
-export function generateMetadata({ params }: { params: { postId: string; }; }) {
+export function generateMetadata({ params }: { params: { postId: string } }) {
   const posts = getSortedPostsData();
   const { postId } = params;
 
-  const post = posts.find(post => post.id === postId);
+  const post = posts.find((post) => post.id === postId);
 
   if (!post) {
     return {
-      title: 'Post Not Found'
+      title: "Post Not Found",
     };
   }
 
@@ -28,11 +29,11 @@ export function generateMetadata({ params }: { params: { postId: string; }; }) {
   };
 }
 
-export default async function Post({ params }: { params: { postId: string; }; }) {
+export default async function Post({ params }: { params: { postId: string } }) {
   const posts = getSortedPostsData();
   const { postId } = params;
 
-  if (!posts.find(post => post.id === postId)) notFound();
+  if (!posts.find((post) => post.id === postId)) notFound();
 
   const { title, date, contentHtml } = await getPostData(postId);
 
@@ -41,9 +42,7 @@ export default async function Post({ params }: { params: { postId: string; }; })
   return (
     <main>
       <h1>{title}</h1>
-      <p>
-        {pubDate}
-      </p>
+      <p>{pubDate}</p>
       <article>
         <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
         <p>

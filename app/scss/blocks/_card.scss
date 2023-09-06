@@ -1,0 +1,14 @@
+.card {
+  border-radius: var(--radius-2);
+  padding: var(--size-fluid-3);
+  box-shadow: var(--shadow-2);
+  max-width: 300px;
+
+  &:hover {
+    box-shadow: var(--shadow-3);
+  }
+
+  @media (--motionOK) {
+    animation: var(--animation-fade-in);
+  }
+}

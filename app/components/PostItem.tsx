@@ -5,15 +5,14 @@ type Props = {
   post: BlogPost;
 };
 
-export default function ListItem({ post }: Props) {
+export default function PostItem({ post }: Props) {
   const { id, title, date } = post;
   const formattedDate = getFormattedDate(date);
 
   return (
-    <li>
+    <div className="box">
       <Link href={`/posts/${id}`}>{title}</Link>
-      <br />
       <p>{formattedDate}</p>
-    </li>
+    </div>
   );
 }
