@@ -1,10 +1,7 @@
 import './scss/global.scss';
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
 import PrimaryNav from './components/PrimaryNav';
 import ProfilePic from './components/ProfilePic';
-
-const font = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Gary H. Wilson',
@@ -18,10 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${font.className} stack center`}>
-        <PrimaryNav />
-        <ProfilePic />
-        {children}
+      <body className="stack center">
+        <div className="wrapper">
+          <PrimaryNav />
+          <ProfilePic />
+          {children}
+        </div>
       </body>
     </html>
   );

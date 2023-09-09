@@ -1,5 +1,5 @@
 import { getSortedPostsData } from "@/lib/posts";
-import PostItem from "./PostItem";
+import PostSummaryItem from "./PostSummaryItem";
 
 export default function Posts() {
   const posts = getSortedPostsData();
@@ -9,7 +9,7 @@ export default function Posts() {
       <h2>Blog</h2>
       <div className="flow">
         {posts.map(post => (
-          <PostItem key={post.id} post={post} />
+          <PostSummaryItem key={post.id} post={post} />
         ))}
       </div>
     </section>

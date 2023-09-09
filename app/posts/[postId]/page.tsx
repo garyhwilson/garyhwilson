@@ -40,11 +40,11 @@ export default async function Post({ params }: { params: { postId: string } }) {
   const pubDate = getFormattedDate(date);
 
   return (
-    <main>
+    <main className="stack">
       <h1>{title}</h1>
       <p>{pubDate}</p>
-      <article>
-        <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <article className="flow">
+        <section className="stack" dangerouslySetInnerHTML={{ __html: contentHtml }} />
         <p>
           <Link href="/">← Back to home</Link>
         </p>
