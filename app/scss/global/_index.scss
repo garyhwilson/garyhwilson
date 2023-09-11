@@ -1,10 +1,9 @@
 @import 'reset';
 @import 'variables';
 
-@import 'reset.scss';
-@import 'fonts.scss';
-@import 'variables.scss';
-@import 'global-styles.scss';
+@import 'reset';
+@import 'fonts';
+@import 'global-styles';
 
 @import '../blocks';
 @import '../compositions';
